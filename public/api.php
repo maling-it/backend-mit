@@ -4,6 +4,7 @@ require __DIR__."/../init.php";
 
 function main(): int
 {
+	$http_code = 200;
 	$where = "";
 	$offset = 0;
 	$limit = 30;
