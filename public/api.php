@@ -50,6 +50,9 @@ function main(): int
 out:
 	http_response_code($http_code);
 	header("Content-Type: application/json");
+	header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Methods: PUT, GET, POST");
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 	echo json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES |
 			 JSON_UNESCAPED_UNICODE);
 	return 0;
