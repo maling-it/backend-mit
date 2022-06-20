@@ -42,9 +42,13 @@ function main(): int
 
 	$st = $pdo->prepare("SELECT id, gd_id, name, size FROM pdf {$where} LIMIT {$limit} OFFSET {$offset}");
 	$st->execute($data);
+	$rows = $st->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($rows as &$p)
+		$p["name"] = mb_convert_encoding($p["name"], "UTF-8", "UTF-8");
+
 	$res = [
 		"num_rows" => (int)$nr[0],
-		"data" => $st->fetchAll(PDO::FETCH_ASSOC)
+		"data" => $rows
 	];
 
 out:
